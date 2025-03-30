@@ -1,6 +1,6 @@
 # Server Setup Checklist ✅
 
-- [ ] **Create 2 servers**
+- [x] **Create 2 servers**
 - [ ] **Install dependencies** (Node.js, Nginx)
 - [ ] **Clone monorepo** to both servers
 - [ ] **Start processes** (Next.js, WebSocket, HTTP)
