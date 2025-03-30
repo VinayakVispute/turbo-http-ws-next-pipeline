@@ -1,16 +1,16 @@
 # Server Setup Checklist ✅
 
 - [x] **Create 2 servers**
-- [ ] **Install dependencies** (Node.js, Nginx)
+- [x] **Install dependencies** (Node.js, Nginx)
 - [ ] **Clone monorepo** to both servers
 - [ ] **Start processes** (Next.js, WebSocket, HTTP)
 - [ ] **Configure domains**:
-  - [ ] `week-25-http.visputevinayak.co`
-  - [ ] `week-25-ws.visputevinayak.co`
-  - [ ] `week-25-fe.visputevinayak.co`
-  - [ ] `staging.week-25-http.visputevinayak.co`
-  - [ ] `staging.week-25-ws.visputevinayak.co`
-  - [ ] `staging.week-25-fe.visputevinayak.co`
+  - [ ] `week-25-http.codeclause.tech`
+  - [ ] `week-25-ws.codeclause.tech`
+  - [ ] `week-25-fe.codeclause.tech`
+  - [ ] `staging.week-25-http.codeclause.tech`
+  - [ ] `staging.week-25-ws.codeclause.tech`
+  - [ ] `staging.week-25-fe.codeclause.tech`
 - [ ] **Refresh Nginx config**
 - [ ] **Test everything** 🚀
 
