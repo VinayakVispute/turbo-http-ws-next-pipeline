@@ -2,7 +2,7 @@
 
 - [x] **Create 2 servers**
 - [x] **Install dependencies** (Node.js, Nginx)
-- [ ] **Clone monorepo** to both servers
+- [x] **Clone monorepo** to both servers
 - [ ] **Start processes** (Next.js, WebSocket, HTTP)
 - [ ] **Configure domains**:
   - [ ] `week-25-http.codeclause.tech`
