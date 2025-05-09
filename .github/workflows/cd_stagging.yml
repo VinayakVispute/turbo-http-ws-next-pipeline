@@ -1,0 +1,12 @@
+name: Deploying to Staging server
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  redeploy_everything:
+    name: Deploying the frontend to staging cluster
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying to staging server"
