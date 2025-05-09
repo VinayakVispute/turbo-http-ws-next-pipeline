@@ -1,4 +1,4 @@
-name: Deploying to Staging server
+name: ReDeploying to Staging server
 on:
   push:
     branches:
@@ -6,7 +6,37 @@ on:
 
 jobs:
   redeploy_everything:
-    name: Deploying the frontend to staging cluster
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Deploying to staging server"
+      - name: Install SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
+          chmod 600 ~./ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" > ~/.ssh/known_host
+
+      - name: SSH & Redeploy the Apps
+        run: |
+          ssh -o StrictHostKeyChecking=no "${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}" << 'EOF'
+            set -e
+            cd turbo-http-ws-next-pipeline/
+            git pull origin main
+
+            cd apps/http-server
+            npm ci
+            pm2 restart http-server || pm2 start npm --name "http-server" -- start
+            cd ../..
+
+            cd apps/web
+            npm ci
+            pm2 restart frontend || pm2 start npm --name "frontend" -- start
+            cd ../..
+
+            cd apps/ws-server
+            npm ci
+            pm2 restart ws-server || pm2 start npm --name "ws-server" -- starts
+
+
+            echo "All Services are deployed succesfully."
+          EOF
