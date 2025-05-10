@@ -18,7 +18,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRODUCTION_HOST }}
           script: |
             set -e
             cd turbo-http-ws-next-pipeline/
