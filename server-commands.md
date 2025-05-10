@@ -159,3 +159,19 @@ http {
 ```bash
 sudo nginx -s reload
 ```
+
+### To Set Default SSH Key for github
+
+```bash
+nano ~/.ssh/config
+```
+
+- Paste this and Save the file
+
+```bash
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github
+  IdentitiesOnly yes
+```
