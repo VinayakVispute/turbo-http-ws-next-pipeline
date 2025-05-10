@@ -1,29 +1,28 @@
 name: Redeploying to Staging server
+
 on:
   push:
     branches:
-      - "main"
+      - "production"
 
 jobs:
-  redeploy_everything_staging:
+  redeploy_everything_production:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install SSH Key
-        run: |
-          mkdir -p ~/.ssh
-          touch ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H "${{ secrets.SSH_HOST }}" > ~/.ssh/known_host
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-      - name: SSH & Redeploy the Apps
-        run: |
-          ssh -o StrictHostKeyChecking=no "${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}" << 'EOF'
+      - name: Execute remote SSH commands using SSH key
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
             set -e
             cd turbo-http-ws-next-pipeline/
             git pull origin main
-
             export PATH=/root/.nvm/versions/node/v22.14.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
             pnpm install
@@ -42,4 +41,3 @@ jobs:
 
 
             echo "All Services are deployed succesfully."
-          EOF
