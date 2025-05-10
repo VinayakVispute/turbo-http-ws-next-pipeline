@@ -24,11 +24,11 @@ jobs:
             cd turbo-http-ws-next-pipeline/
             git pull origin main
 
-            export $PATH=/root/.nvm/versions/node/v22.14.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+            export PATH=/root/.nvm/versions/node/v22.14.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
             pnpm install
             pnpm run build
-            
+
             cd apps/http-server
             pm2 restart http-server || pm2 start npm --name "http-server" -- start
             cd ../..
