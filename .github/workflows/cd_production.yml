@@ -1,4 +1,4 @@
-name: Redeploying to Staging server
+name: Redeploying to Production server
 
 on:
   push:
