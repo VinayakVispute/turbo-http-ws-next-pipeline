@@ -22,7 +22,7 @@ jobs:
           script: |
             set -e
             cd turbo-http-ws-next-pipeline/
-            git pull origin main
+            git checkout production && git pull
             export PATH=/root/.nvm/versions/node/v22.14.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
             pnpm install
