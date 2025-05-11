@@ -6,7 +6,8 @@ export default async function Home() {
 
   return (
     <div>
-      First name (This is Vinayak):
+      <h1>Welcome to {process.env.env_name}</h1>
+      First name (This is Vinayak \n):
       {user?.username}
       password:
       {user?.password}
