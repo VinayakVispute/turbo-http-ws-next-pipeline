@@ -6,6 +6,8 @@ export default async function Home() {
 
   return (
     <div>
+      <h1>Welcome to Next.js!</h1>
+      <h2>This is {process.env.env_name} Environment</h2>
       First name (This is Vinayak):
       {user?.username}
       password:
