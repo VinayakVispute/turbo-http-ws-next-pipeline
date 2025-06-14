@@ -38,7 +38,7 @@ jobs:
             cd ../..
 
             cd apps/ws-server
-            pm2 restart ws-server || pm2 start npm --name "ws-server" -- starts
+            pm2 restart ws-server || pm2 start npm --name "ws-server" -- start
 
 
             echo "All Services are deployed succesfully."
